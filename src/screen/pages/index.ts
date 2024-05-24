@@ -2,3 +2,5 @@ export * from "./Home/HomeScreen";
 export * from "./Search/SearchScreen";
 export * from "./Settings/SettingsScreen";
 export * from "./Library/LibraryScreen";
+export * from "./Search/SampleScreen";
+export * from "./Music/Music";

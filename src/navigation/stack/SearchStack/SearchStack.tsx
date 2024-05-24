@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { SearchScreen } from "@/screen/pages";
+import { SampleScreen, SearchScreen } from "@/screen/pages";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,12 +13,16 @@ export function SearchStack() {
           title: "Search",
           headerLargeTitle: true,
           headerBlurEffect: "systemUltraThinMaterial",
-          headerSearchBarOptions: {
-            placeholder: "Search Artists, Songs, Playlists and more!",
-            tintColor: "white",
-          },
         }}
         component={SearchScreen}
+      />
+
+      <Stack.Screen
+        name="SampleScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={SampleScreen}
       />
     </Stack.Navigator>
   );

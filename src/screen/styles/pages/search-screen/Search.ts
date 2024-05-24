@@ -9,4 +9,10 @@ export const SearchStyle = StyleSheet.create({
   },
   title: { fontSize: 25, color: "#fff" },
   flatlist: { justifyContent: "center", alignItems: "center", marginTop: 10 },
+  exploreMore: {
+    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
 });

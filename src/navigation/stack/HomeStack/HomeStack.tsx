@@ -12,7 +12,10 @@ export function HomeStack() {
         name="HomeScreen"
         component={HomeScreen}
         options={{
-          headerBlurEffect: "systemMaterialLight",
+          // headerBlurEffect: "dark",
+          // headerTransparent: true,
+          headerLargeTitle: true,
+          headerTitle: "Home",
         }}
       />
     </Stack.Navigator>

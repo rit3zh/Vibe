@@ -7,7 +7,17 @@ const Stack = createNativeStackNavigator();
 export function SettingsStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          headerLargeTitle: true,
+          title: "Settings",
+          headerSearchBarOptions: {
+            placeholder: "Search",
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
