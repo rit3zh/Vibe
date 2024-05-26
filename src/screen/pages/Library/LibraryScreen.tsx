@@ -170,6 +170,7 @@ export function LibraryScreen(props: NativeStackHeaderProps) {
           }}
           renderItem={({ item, index }) => (
             <RecentAdded
+              onPress={() => props.navigation.navigate("AlbumScreen")}
               index={index}
               length={Constants.RES_TRACKS.slice(0, 4).length}
               {...item}

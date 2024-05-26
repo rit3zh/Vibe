@@ -4,3 +4,6 @@ export * from "./Settings/SettingsScreen";
 export * from "./Library/LibraryScreen";
 export * from "./Search/SampleScreen";
 export * from "./Music/Music";
+export * from "./Music/Playlist";
+export * from "./Music/Artist";
+export * from "./Library/AlbumScreen";

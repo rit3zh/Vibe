@@ -4,10 +4,8 @@ const { width, height } = Dimensions.get("window");
 
 export const DisplayListViewStyles = StyleSheet.create({
   container: {
-    backgroundColor: "#151515",
     width: width - 40,
     height: 60,
-
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -21,6 +19,7 @@ export const DisplayListViewStyles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#242424",
     borderTopWidth: 1,
+
     borderTopColor: "#242424",
     borderRightWidth: 1,
     borderRightColor: "#0c0c0c",
@@ -34,11 +33,10 @@ export const DisplayListViewStyles = StyleSheet.create({
   },
   textContainer: {
     marginLeft: 10,
-    justifyContent: "center",
     flex: 1,
   },
   name: {
-    fontSize: 14,
+    maxWidth: 260,
 
     color: "white",
   },

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { HomeScreen } from "@/screen/pages";
+import { Artist, HomeScreen, Playlist } from "@/screen/pages";
 import { Platform } from "react-native";
 
 const Stack = createNativeStackNavigator();
@@ -17,6 +17,18 @@ export function HomeStack() {
           headerLargeTitle: true,
           headerTitle: "Home",
         }}
+      />
+
+      <Stack.Screen
+        name="PlaylistScreen"
+        component={Playlist}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ArtistScreen"
+        component={Artist}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

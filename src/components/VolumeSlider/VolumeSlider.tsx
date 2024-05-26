@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ViewProps } from "react-native";
 import { Slider } from "react-native-awesome-slider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSharedValue } from "react-native-reanimated";
+import { responsiveHeight } from "react-native-responsive-dimensions";
 import TrackPlayer, { useProgress } from "react-native-track-player";
 
 export const VolumeProgressBar = ({ style }: ViewProps) => {
@@ -25,9 +26,8 @@ export const VolumeProgressBar = ({ style }: ViewProps) => {
       <View style={style}>
         <View
           style={{
-            justifyContent: "center",
             alignItems: "center",
-            marginTop: 50,
+            marginTop: responsiveHeight(7),
             flexDirection: "row",
           }}
         >
@@ -35,7 +35,7 @@ export const VolumeProgressBar = ({ style }: ViewProps) => {
             name="volume-low"
             color={"#808080"}
             size={18}
-            style={{ marginLeft: 20 }}
+            style={{ marginLeft: 20, right: 5 }}
           />
           <Slider
             progress={progress}
@@ -68,7 +68,10 @@ export const VolumeProgressBar = ({ style }: ViewProps) => {
             name="volume-high"
             color={"#808080"}
             size={18}
-            style={{ marginRight: 20 }}
+            style={{
+              marginRight: 20,
+              left: 10,
+            }}
           />
         </View>
       </View>

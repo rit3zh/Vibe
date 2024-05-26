@@ -34,6 +34,7 @@ export function SearchScreen(props: NativeStackHeaderProps) {
         placeholder: "Search Artists, Songs, Playlists and more!",
         tintColor: "white",
         textColor: "white",
+        hideWhenScrolling: false,
         onFocus: () => {
           setSearchBarFocused(true);
           setFadeOutComplete(false);

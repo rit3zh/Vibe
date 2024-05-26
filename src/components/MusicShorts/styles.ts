@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { responsiveWidth } from "react-native-responsive-dimensions";
 const { width, height } = Dimensions.get("window");
 
 export const MusicShortStyle = StyleSheet.create({
@@ -12,8 +13,8 @@ export const MusicShortStyle = StyleSheet.create({
   header: {
     position: "absolute",
     flexDirection: "row",
-    top: 50,
-    width: width - 180,
+
+    width: responsiveWidth(60),
     alignItems: "center",
     justifyContent: "space-between",
   },

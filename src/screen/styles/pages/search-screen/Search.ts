@@ -8,11 +8,15 @@ export const SearchStyle = StyleSheet.create({
     marginTop: 10,
   },
   title: { fontSize: 25, color: "#fff" },
-  flatlist: { justifyContent: "center", alignItems: "center", marginTop: 10 },
-  exploreMore: {
-    marginTop: 10,
+  flatlist: {
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
+    marginTop: 10,
+    marginLeft: 20,
+  },
+  exploreMore: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 10,
   },
 });

@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { TrendingHomeStyles as styles } from "./styles";
 import { useInitialFonts, Fonts } from "@/utils/hooks";
@@ -61,25 +61,30 @@ export const TrendingHome: React.FC<Props> = ({ ...props }: Props) => {
                   </Text>
                 </View>
               </View>
-              <View style={styles.buttonContainer}>
-                <View style={styles.button}>
-                  <View style={styles.rowContainer}>
-                    <Ionicons name="play" color={"black"} size={23} />
-                    <Text
-                      style={[
-                        styles.buttonText,
-                        {
-                          fontFamily: font,
-                        },
-                      ]}
-                    >
-                      Listen Now
-                    </Text>
-                  </View>
-                </View>
-              </View>
             </View>
           </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => props.onPress(props._id)}
+          >
+            {/* <View style={styles.button}> */}
+            <View style={styles.rowContainer}>
+              <Ionicons name="play" color={"black"} size={23} />
+              <Text
+                style={[
+                  styles.buttonText,
+                  {
+                    fontFamily: font,
+                  },
+                ]}
+              >
+                Listen Now
+              </Text>
+            </View>
+            {/* </View> */}
+          </TouchableOpacity>
         </View>
       </View>
     </View>

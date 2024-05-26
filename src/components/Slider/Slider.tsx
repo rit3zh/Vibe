@@ -2,6 +2,10 @@ import { StyleSheet, Text, View, ViewProps } from "react-native";
 import { Slider } from "react-native-awesome-slider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSharedValue } from "react-native-reanimated";
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from "react-native-responsive-dimensions";
 import TrackPlayer, { useProgress } from "react-native-track-player";
 
 export const PlayerProgressBar = ({ style }: ViewProps) => {
@@ -26,7 +30,7 @@ export const PlayerProgressBar = ({ style }: ViewProps) => {
           style={{
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 80,
+            marginTop: responsiveHeight(14),
           }}
         >
           <Slider
@@ -48,7 +52,7 @@ export const PlayerProgressBar = ({ style }: ViewProps) => {
             onValueChange={async (value) => {
               await TrackPlayer.seekTo(value * duration);
             }}
-            style={{ width: 400 }}
+            style={{ width: responsiveWidth(90) }}
             onSlidingComplete={async (value) => {
               // if the user is not sliding, we should not update the position
               // if (!isSliding.value) return;

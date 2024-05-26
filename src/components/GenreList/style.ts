@@ -1,4 +1,9 @@
 import { StyleSheet, Dimensions } from "react-native";
+import {
+  responsiveHeight,
+  responsiveScreenWidth,
+  responsiveWidth,
+} from "react-native-responsive-dimensions";
 const { width } = Dimensions.get("window");
 
 export const GenreStyle = StyleSheet.create({
@@ -6,7 +11,7 @@ export const GenreStyle = StyleSheet.create({
     margin: 5,
   },
   contentContainer: {
-    width: 190,
+    width: responsiveWidth(47),
     height: 110,
 
     borderRadius: 5,

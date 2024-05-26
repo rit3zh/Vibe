@@ -10,8 +10,9 @@ import {
 } from "@/components";
 import * as Constants from "@/utils/constants/index";
 import { Fonts, useInitialFonts } from "@/utils/hooks";
+import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 
-export function HomeScreen() {
+export function HomeScreen(props: NativeStackHeaderProps) {
   const FontLoaded = useInitialFonts();
   const font = FontLoaded ? Fonts.Circular : undefined;
 
@@ -25,6 +26,7 @@ export function HomeScreen() {
       <GradientView style={{ flex: 1 }} theme="dark">
         <View style={styles.trendingContainer}>
           <TrendingHome
+            onPress={() => props.navigation.navigate("ArtistScreen")}
             _id={Constants.ALBUM.id}
             image={Constants.ALBUM.images[0]?.url}
             name={Constants.ALBUM.name}
@@ -57,6 +59,7 @@ export function HomeScreen() {
             renderItem={({ item, index }) => (
               <FlatlistPlaylist
                 _id={item.content.data?.uri}
+                onPress={(id) => props.navigation.navigate("PlaylistScreen")}
                 image={
                   item.content?.data.images?.items?.at(-1)?.sources?.at(-1)?.url
                 }
@@ -91,6 +94,7 @@ export function HomeScreen() {
             horizontal
             renderItem={({ item, index }) => (
               <FlatlistPlaylist
+                onPress={(id) => props.navigation.navigate("PlaylistScreen")}
                 _id={item.content.data?.uri}
                 image={
                   item.content?.data.images?.items?.at(-1)?.sources?.at(-1)?.url

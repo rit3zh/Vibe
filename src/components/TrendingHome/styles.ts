@@ -1,11 +1,15 @@
 import { Dimensions, StyleSheet } from "react-native";
-
+import {
+  responsiveFontSize as rf,
+  responsiveHeight as rh,
+  responsiveWidth as rw,
+} from "react-native-responsive-dimensions";
 const { width, height } = Dimensions.get("window");
 
 export const TrendingHomeStyles = StyleSheet.create({
   container: {
     width: width - 40,
-    height: height / 2,
+    height: rh(50),
     backgroundColor: "red",
     borderRadius: 4,
     justifyContent: "center",
@@ -14,10 +18,12 @@ export const TrendingHomeStyles = StyleSheet.create({
   },
   contentContainer: {},
   interactionWrapper: {
-    alignItems: "center",
+    justifyContent: "center",
   },
   interaction: {
-    top: 30,
+    flex: 1,
+    height: rh(30),
+    justifyContent: "center",
   },
   detailContainer: {
     position: "absolute",
@@ -30,7 +36,7 @@ export const TrendingHomeStyles = StyleSheet.create({
     textShadowRadius: 10,
   },
   title: {
-    fontSize: 45,
+    fontSize: rf(5.5),
     color: "white",
     textShadowColor: "rgba(0, 0, 0, 0.8)",
     textShadowOffset: { width: 0, height: 0 },
@@ -39,13 +45,11 @@ export const TrendingHomeStyles = StyleSheet.create({
   trendingTitleContainer: {
     margin: 10,
   },
-  titleContainer: {
-    marginTop: 20,
-  },
+  titleContainer: {},
   artistContainer: {},
   artist: {
     color: "white",
-    fontSize: 25,
+    fontSize: rf(3),
     textShadowColor: "rgba(0, 0, 0, 0.8)",
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 10,
@@ -56,11 +60,12 @@ export const TrendingHomeStyles = StyleSheet.create({
     borderRadius: 4,
   },
   buttonContainer: {
-    height: 160,
     justifyContent: "flex-end",
+    flex: 1,
+    backgroundColor: "red",
   },
   button: {
-    width: 140,
+    width: rw(35),
     height: 50,
     backgroundColor: "white",
     borderRadius: 7,

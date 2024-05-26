@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BottomTabBar,
   createBottomTabNavigator,
@@ -14,27 +14,51 @@ import { BlurView } from "expo-blur";
 import { Ionicons } from "@expo/vector-icons";
 import * as Constants from "@/utils/constants/index";
 import { useThemeContext } from "@/utils/hooks";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { Route, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { FloatingPlayer } from "@/components/index";
+
 const Tabs = createBottomTabNavigator();
 
 export function TabNavigator() {
   const theme = useThemeContext();
 
+  const [hideFloatingPlayer, setHideFloatingPlayer] = useState(false);
+  const [route, setRoute] = useState<any>();
+
+  useEffect(() => {
+    const handleTabBarVisibility = (_route: Partial<Route<string>>) => {
+      if (!_route) return;
+      const routeName = getFocusedRouteNameFromRoute(_route);
+      if (routeName === "SampleScreen") {
+        setHideFloatingPlayer(true);
+      } else {
+        setHideFloatingPlayer(false);
+      }
+    };
+    if (!route) return;
+    handleTabBarVisibility(route);
+  }, [route]);
+
   return (
     <>
       <Tabs.Navigator
-        tabBar={(props) => (
-          <React.Fragment>
-            <FloatingPlayer
-              onPress={() => props.navigation.navigate("Music")}
-            />
-            <BottomTabBar {...props} />
-          </React.Fragment>
-        )}
+        tabBar={(props) => {
+          const routeIndex = props.state.routes[props.state.index];
+
+          setRoute(routeIndex);
+          return (
+            <React.Fragment>
+              {!hideFloatingPlayer && (
+                <FloatingPlayer
+                  onPress={() => props.navigation.navigate("Music")}
+                />
+              )}
+              <BottomTabBar {...props} />
+            </React.Fragment>
+          );
+        }}
         screenOptions={({ route }) => ({
           headerShown: false,
-
           tabBarBackground: () => (
             <BlurView
               intensity={100}
@@ -45,8 +69,9 @@ export function TabNavigator() {
             />
           ),
           tabBarStyle: ((route) => {
-            const routeName = getFocusedRouteNameFromRoute(route) ?? "";
-            console.log(routeName);
+            if (!route) return;
+            const routeName = getFocusedRouteNameFromRoute(route);
+
             if (routeName === "SampleScreen") {
               return { display: "none" };
             }
@@ -57,9 +82,8 @@ export function TabNavigator() {
         <Tabs.Screen
           name={"HomeStack"}
           component={HomeStack}
-          options={({}) => ({
+          options={{
             tabBarShowLabel: false,
-
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 name={!focused ? "home-outline" : "home"}
@@ -71,12 +95,12 @@ export function TabNavigator() {
                 size={24}
               />
             ),
-          })}
+          }}
         />
         <Tabs.Screen
           name={"SearchStack"}
           component={SearchStack}
-          options={({}) => ({
+          options={{
             tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => (
               <Ionicons
@@ -89,12 +113,12 @@ export function TabNavigator() {
                 size={24}
               />
             ),
-          })}
+          }}
         />
         <Tabs.Screen
           name={"LibraryStack"}
           component={LibraryStack}
-          options={({ navigation, route }) => ({
+          options={{
             tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => (
               <Ionicons
@@ -107,12 +131,12 @@ export function TabNavigator() {
                 size={24}
               />
             ),
-          })}
+          }}
         />
         <Tabs.Screen
           name={"SettingsStack"}
           component={SettingsStack}
-          options={({}) => ({
+          options={{
             tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => (
               <Ionicons
@@ -125,7 +149,7 @@ export function TabNavigator() {
                 size={24}
               />
             ),
-          })}
+          }}
         />
       </Tabs.Navigator>
     </>

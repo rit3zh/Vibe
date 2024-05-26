@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { RecentAddedStyle as styles } from "./styles";
 interface Props {
@@ -23,6 +23,8 @@ interface Props {
   is_local: boolean;
   index?: number;
   length?: number;
+
+  onPress?: () => any;
 }
 
 interface Album {
@@ -90,28 +92,30 @@ export const RecentAdded: React.FC<Props> = ({
 }: Props): React.ReactNode => {
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <Image
-          source={{ uri: props.album.images[0]?.url }}
-          style={styles.image}
-        />
+      <TouchableOpacity onPress={props.onPress}>
+        <View style={styles.contentContainer}>
+          <Image
+            source={{ uri: props.album.images[0]?.url }}
+            style={styles.image}
+          />
 
-        <View
-          style={[
-            styles.detailsContainer,
-            {
-              marginBottom: props.index === props.length - 1 ? 25 : 0,
-            },
-          ]}
-        >
-          <Text numberOfLines={1} style={styles.title}>
-            {props.name}
-          </Text>
-          <Text style={styles.subtitle}>
-            {props.artists.map((a) => a.name).join(", ")}
-          </Text>
+          <View
+            style={[
+              styles.detailsContainer,
+              {
+                marginBottom: props.index === props.length - 1 ? 25 : 0,
+              },
+            ]}
+          >
+            <Text numberOfLines={1} style={styles.title}>
+              {props.name}
+            </Text>
+            <Text style={styles.subtitle}>
+              {props.artists.map((a) => a.name).join(", ")}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

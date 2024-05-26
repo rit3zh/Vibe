@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableHighlight } from "react-native";
 import React from "react";
 import { FlatListPlaylistStyle as styles } from "./styles";
 import { Fonts, useInitialFonts } from "@/utils/hooks";
@@ -7,6 +7,7 @@ interface Props {
   title: string;
   image: string;
   description?: string;
+  onPress?: (id: string) => any | void;
 }
 
 export const FlatlistPlaylist: React.FC<Props> = ({ ...props }: Props) => {
@@ -16,33 +17,35 @@ export const FlatlistPlaylist: React.FC<Props> = ({ ...props }: Props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <Image source={{ uri: props.image }} style={styles.image} />
-        <View style={styles.details}>
-          <Text
-            style={[
-              styles.title,
-              {
-                fontFamily: fontRegular,
-              },
-            ]}
-          >
-            {props.title}
-          </Text>
+      <TouchableHighlight onPress={() => props.onPress(props._id)}>
+        <View style={styles.contentContainer}>
+          <Image source={{ uri: props.image }} style={styles.image} />
+          <View style={styles.details}>
+            <Text
+              style={[
+                styles.title,
+                {
+                  fontFamily: fontRegular,
+                },
+              ]}
+            >
+              {props.title}
+            </Text>
 
-          <Text
-            numberOfLines={2}
-            style={[
-              styles.description,
-              {
-                fontFamily: fontRegular,
-              },
-            ]}
-          >
-            {props.description}
-          </Text>
+            <Text
+              numberOfLines={2}
+              style={[
+                styles.description,
+                {
+                  fontFamily: fontRegular,
+                },
+              ]}
+            >
+              {props.description}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
     </View>
   );
 };

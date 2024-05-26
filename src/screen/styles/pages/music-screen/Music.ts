@@ -1,4 +1,8 @@
 import { Dimensions, StyleSheet } from "react-native";
+import {
+  responsiveFontSize,
+  responsiveHeight,
+} from "react-native-responsive-dimensions";
 
 const { width, height } = Dimensions.get("window");
 
@@ -7,7 +11,7 @@ export const MusicStyle = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    top: 40,
+    top: responsiveHeight(10),
   },
   title: {
     color: "white",
@@ -15,28 +19,28 @@ export const MusicStyle = StyleSheet.create({
   },
   artist: {
     color: "#767676",
-    fontSize: 14,
+    fontSize: responsiveFontSize(1.6),
   },
   imageView: {
     width: width,
-    height: height / 2,
+    height: 300,
 
     justifyContent: "center",
     alignItems: "center",
   },
   image: {
-    width: 350,
-    height: 350,
+    width: 300,
+    height: 300,
     borderRadius: 9,
   },
   detailsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginTop: responsiveHeight(5),
   },
   columnsContainer: {
     justifyContent: "center",
-
     marginLeft: 30,
   },
   interactionWrapper: {
@@ -48,6 +52,7 @@ export const MusicStyle = StyleSheet.create({
   indicatorContainer: {
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 4,
   },
   indicator: {
     backgroundColor: "#8c8c8c",
@@ -59,6 +64,7 @@ export const MusicStyle = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     flexDirection: "row",
+    top: responsiveHeight(1),
   },
   interaction: {
     borderRadius: 9999,
@@ -73,6 +79,7 @@ export const MusicStyle = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    bottom: 10,
+    marginTop: responsiveHeight(6),
+    marginBottom: responsiveHeight(3),
   },
 });

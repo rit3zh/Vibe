@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 
 export const HomeStyle = StyleSheet.create({
   trendingContainer: {
@@ -10,6 +11,6 @@ export const HomeStyle = StyleSheet.create({
   },
   heading: {
     color: "white",
-    fontSize: 30,
+    fontSize: responsiveFontSize(3.3),
   },
 });
