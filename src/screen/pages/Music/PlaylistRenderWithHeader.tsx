@@ -53,7 +53,7 @@ export const PlaylistRenderWithHeader: React.FC<ChildrenComponent> = ({
     >
       <AnimatedScrollView
         headerMaxHeight={
-          dynamicIsland ? responsiveHeight(48) : responsiveHeight(68)
+          dynamicIsland ? responsiveHeight(48) : responsiveHeight(50)
         }
         HeaderNavbarComponent={
           <>
@@ -108,10 +108,13 @@ export const PlaylistRenderWithHeader: React.FC<ChildrenComponent> = ({
               >
                 <View
                   style={{
-                    height: 450,
                     width: Dimensions.get("window").width,
                     marginLeft: 10,
                     justifyContent: "flex-end",
+
+                    height: dynamicIsland
+                      ? responsiveHeight(48)
+                      : responsiveHeight(48.5),
                   }}
                 >
                   <Text

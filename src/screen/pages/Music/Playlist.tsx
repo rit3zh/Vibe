@@ -5,7 +5,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PlaylistRenderWithoutHeader } from "./PlaylistRenderWithoutHeader";
 import { PlaylistRenderWithHeader } from "./PlaylistRenderWithHeader";
 export function Playlist(props: NativeStackHeaderProps) {
-  const _key_: string = "header_image_ursl_desktop";
+  const _key_: string = "header_image_url_desktop";
   const headerImage = Constants.PLAYLIST.data.playlistV2.attributes.filter(
     ({ key }) => key === _key_
   );
